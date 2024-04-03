@@ -1,0 +1,48 @@
+from rest_framework import viewsets
+from .models import User, Movie, Rating
+from .serializers import UserSerializer, MovieSerializer, RatingSerializer
+from rest_framework import filters, status
+from django.contrib.auth import authenticate
+from rest_framework.authtoken.models import Token
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from .permissions import IsAdminOrReadOnly
+
+class LoginView(APIView):
+    def post(self, request, *args, **kwargs):
+        username = request.data.get("username")
+        password = request.data.get("password")
+        user = authenticate(username=username, password=password)
+        if user:
+            token, created = Token.objects.get_or_create(user=user)
+            return Response({"token": token.key})
+        else:
+            return Response({"error": "Wrong Credentials"}, status=status.HTTP_400_BAD_REQUEST)
+        
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        request.user.auth_token.delete()
+        return Response(status=204)
+    
+class UserViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class MovieViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name', 'genre']
+
+class RatingViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
