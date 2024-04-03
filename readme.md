@@ -61,6 +61,16 @@ Visit `http://127.0.0.1:8000/` in your web browser to confirm the project is run
 - To **View All Movies** or **Search for a Movie**, send a GET request to `/api/movies/` with optional `?search=<movie_name>` query parameters.
 - To **Rate a Movie**, send a POST request to /api/ratings/ including the movie ID and your rating value in the request body.
 
+## Postman Collection
+
+For API testing and exploration, a Postman collection is provided with the project. This collection contains pre-configured requests for all the API endpoints, making it easier to test and interact with the API. File name `vts coding test drf.postman_collection.json`
+
+To use the collection:
+
+1. Download and install [Postman](https://www.getpostman.com/).
+2. Import the provided collection file into Postman.
+3. Ensure your local server is running as the collection is configured to point to `localhost`.
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a pull request or create an issue for any features, bug fixes, or improvements.
