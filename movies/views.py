@@ -39,6 +39,13 @@ class MovieViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter]
     search_fields = ['name', 'genre']
 
+    def get_serializer(self, *args, **kwargs):
+        if 'search' in self.request.query_params:
+            pass
+        else:
+            kwargs['fields'] = [field.name for field in Movie._meta.fields]
+        return super(MovieViewSet, self).get_serializer(*args, **kwargs)
+
 class RatingViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = Rating.objects.all()
