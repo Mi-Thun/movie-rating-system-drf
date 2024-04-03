@@ -24,7 +24,7 @@ Ensure you have the following installed on your system:
 - PostgreSQL
 
 1. **Clone the Repository**
-   git clone https://github.com/mi-thun/movie-rating-system.git
+   git clone https://github.com/mi-thun/movie-rating-system-drf.git
    cd movie-rating-system
 
 2. **Create a Virtual Environment**
