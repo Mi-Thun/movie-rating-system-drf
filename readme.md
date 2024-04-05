@@ -75,6 +75,149 @@ To use the collection:
 2. Import the provided collection file into Postman.
 3. Ensure your local server is running as the collection is configured to point to `localhost`.
 
+To create an API document based on the provided Postman collection, we'll structure the document with an overview section, followed by detailed endpoints. This document will describe each API endpoint, including the method, URL, headers, request body, and any authorization required. 
+
+# API Documentation 
+
+## Overview
+
+This document outlines the API endpoints for Django Rest Framework (DRF) application. The API supports operations such as user login, logout, user management, and movie-related functionalities including adding movies, searching movies, and rating movies.
+
+Base URL: `http://127.0.0.1:8000/api/`
+
+## Authentication
+
+Some endpoints require authentication. This is achieved by sending a Token in the Authorization header. The token must be acquired through the login process.
+
+## Endpoints
+
+### Login
+
+- **Method**: POST
+- **URL**: `/login/`
+- **Auth Required**: No
+- **Headers**: None
+- **Body**: 
+  ```json
+  {
+    "username": "user@example.com",
+    "password": "password"
+  }
+  ```
+- **Description**: Authenticates the user and returns a token for accessing protected endpoints.
+
+### Logout
+
+- **Method**: POST
+- **URL**: `/logout/`
+- **Auth Required**: Yes
+- **Headers**:
+  - Authorization: Token `<user_token>`
+- **Body**: None
+- **Description**: Logs out the user and invalidates the user's token.
+
+### Get All Users (Check User)
+
+- **Method**: GET
+- **URL**: `/users/`
+- **Auth Required**: Yes
+- **Headers**:
+  - Authorization: Token `<user_token>`
+- **Body**: None
+- **Description**: Retrieves a list of all users. This action checks if the user exists or not.
+
+### Get All Users (Admin Only)
+
+- **Method**: GET
+- **URL**: `/users/`
+- **Auth Required**: Yes
+- **Headers**:
+  - Authorization: Token `<admin_token>`
+- **Body**: None
+- **Description**: Retrieves a list of all users. Only accessible by admin users.
+
+### Add New User (Admin Only)
+
+- **Method**: POST
+- **URL**: `/users/`
+- **Auth Required**: Yes
+- **Headers**:
+  - Authorization: Token `<admin_token>`
+- **Body**: 
+  ```json
+  {
+    "name": "New User",
+    "phone": "0000000000",
+    "email": "newuser@example.com",
+    "password": "password"
+  }
+  ```
+- **Description**: Allows an admin to add a new user.
+
+### Get All Movies
+
+- **Method**: GET
+- **URL**: `/movies/`
+- **Auth Required**: Yes
+- **Headers**:
+  - Authorization: Token `<admin_token>`
+- **Body**: None
+- **Description**: Retrieves a list of all movies.
+
+### Add Movie
+
+- **Method**: POST
+- **URL**: `/movies/`
+- **Auth Required**: Yes
+- **Headers**:
+  - Authorization: Token `<user_token>`
+- **Body**: 
+  ```json
+  {
+    "name": "Movie Name",
+    "genre": "Genre",
+    "rating": "PG",
+    "release_date": "YYYY-MM-DD"
+  }
+  ```
+- **Description**: Adds a new movie to the database.
+
+### Search Movie
+
+- **Method**: GET
+- **URL**: `/movies/?search="<Movie Name>"`
+- **Auth Required**: Yes
+- **Headers**:
+  - Authorization: Token `<user_token>`
+- **Body**: None
+- **Description**: Searches for movies by name.
+
+### Add a Rating
+
+- **Method**: POST
+- **URL**: `/ratings/`
+- **Auth Required**: Yes
+- **Headers**:
+  - Authorization: Token `<user_token>`
+- **Body**: 
+  ```json
+  {
+    "user_id": 1,
+    "movie_id": 3,
+    "rating": 5
+  }
+  ```
+- **Description**: Allows a user to add a rating to a movie.
+
+### Get All Ratings
+
+- **Method**: GET
+- **URL**: `/ratings/`
+- **Auth Required**: Yes
+- **Headers**:
+  - Authorization: Token `<user_token>`
+- **Description**: Retrieves all movie ratings.
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a pull request or create an issue for any features, bug fixes, or improvements.
