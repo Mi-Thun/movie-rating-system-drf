@@ -7,7 +7,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from .permissions import IsAdminOrReadOnly
+from .permissions import IsAdminOrReadOnly, IsAdminUser
 
 class LoginView(APIView):
     def post(self, request, *args, **kwargs):
@@ -25,10 +25,10 @@ class LogoutView(APIView):
 
     def post(self, request):
         request.user.auth_token.delete()
-        return Response(status=204)
+        return Response({"message": "You have been logged out successfully."}, status=status.HTTP_200_OK)
     
 class UserViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
+    permission_classes = [IsAuthenticated, IsAdminUser]
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
@@ -52,4 +52,4 @@ class RatingViewSet(viewsets.ModelViewSet):
     serializer_class = RatingSerializer
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        serializer.save(user_id=self.request.user)

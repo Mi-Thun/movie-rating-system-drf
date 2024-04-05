@@ -10,10 +10,6 @@ class UserSerializer(serializers.ModelSerializer):
 from rest_framework import serializers
 
 class DynamicFieldsModelSerializer(serializers.ModelSerializer):
-    """
-    A ModelSerializer that takes an additional `fields` argument that
-    controls which fields should be displayed.
-    """
 
     def __init__(self, *args, **kwargs):
 
@@ -34,7 +30,7 @@ class MovieSerializer(DynamicFieldsModelSerializer, serializers.ModelSerializer)
         fields = '__all__' 
 
     def get_average_rating(self, obj):
-        return Rating.objects.filter(movie=obj).aggregate(Avg('rating'))['rating__avg']
+        return Rating.objects.filter(movie_id=obj).aggregate(Avg('rating'))['rating__avg']
 
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:

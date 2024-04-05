@@ -13,16 +13,10 @@
 					"type": "noauth"
 				},
 				"method": "POST",
-				"header": [
-					{
-						"key": "photo",
-						"value": "",
-						"type": "text"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"a@gmail.com\",\r\n    \"password\": \"a123\"\r\n}",
+					"raw": "{\r\n    \"username\": \"mohsenulkabirmi8486@gmail.com\",\r\n    \"password\": \"#Mk123456\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -58,19 +52,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token 3a119345fc301cbf6490bc163c8fa2a42096fff5",
+						"value": "Token 69dd794b4b6309a5d8ae965bc40522fb8d56e22e",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "photo",
-							"value": "",
-							"type": "text"
-						}
-					]
+					"formdata": []
 				},
 				"url": {
 					"raw": "http://127.0.0.1:8000/api/logout/",
@@ -92,7 +80,7 @@
 			"response": []
 		},
 		{
-			"name": "get all users",
+			"name": "get all users check user do or not",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -104,7 +92,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token 3a119345fc301cbf6490bc163c8fa2a42096fff5",
+						"value": "Token 69dd794b4b6309a5d8ae965bc40522fb8d56e22e",
 						"type": "text"
 					}
 				],
@@ -137,7 +125,52 @@
 			"response": []
 		},
 		{
-			"name": "add new user",
+			"name": "get all users only admin do that",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token ac566c02a4588acae7057a59da778aa97dee7063",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add new user only admin do that",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -146,7 +179,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token 3a119345fc301cbf6490bc163c8fa2a42096fff5",
+						"value": "Token ac566c02a4588acae7057a59da778aa97dee7063",
 						"type": "text"
 					}
 				],
@@ -191,7 +224,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token 3a119345fc301cbf6490bc163c8fa2a42096fff5",
+						"value": "Token ac566c02a4588acae7057a59da778aa97dee7063",
 						"type": "text"
 					}
 				],
@@ -228,13 +261,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token 3a119345fc301cbf6490bc163c8fa2a42096fff5",
+						"value": "Token 69dd794b4b6309a5d8ae965bc40522fb8d56e22e",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Avengers\",\r\n    \"genre\":\"Action\",\r\n    \"rating\":\"PG\",\r\n    \"release_date\":\"2019-04-01\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Avengers 2\",\r\n    \"genre\":\"Action\",\r\n    \"rating\":\"PG\",\r\n    \"release_date\":\"2019-04-01\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -270,22 +303,16 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token 3a119345fc301cbf6490bc163c8fa2a42096fff5",
+						"value": "Token 69dd794b4b6309a5d8ae965bc40522fb8d56e22e",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "photo",
-							"value": "",
-							"type": "text"
-						}
-					]
+					"formdata": []
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/movies/?search=\"Avengers: Endgame\"",
+					"raw": "http://127.0.0.1:8000/api/movies/?search=\"Home Alone\"",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -302,7 +329,7 @@
 					"query": [
 						{
 							"key": "search",
-							"value": "\"Avengers: Endgame\""
+							"value": "\"Home Alone\""
 						}
 					]
 				}
@@ -316,13 +343,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token 3a119345fc301cbf6490bc163c8fa2a42096fff5",
+						"value": "Token 69dd794b4b6309a5d8ae965bc40522fb8d56e22e",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user\": 1, \r\n    \"movie\": 3, \r\n    \"rating\": 5\r\n}",
+					"raw": "{\r\n    \"user_id\": 1, \r\n    \"movie_id\": 3, \r\n    \"rating\": 5\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -350,27 +377,15 @@
 		},
 		{
 			"name": "get all ratings",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token 3a119345fc301cbf6490bc163c8fa2a42096fff5",
+						"value": "Token 69dd794b4b6309a5d8ae965bc40522fb8d56e22e",
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "http://127.0.0.1:8000/api/ratings/",
 					"protocol": "http",

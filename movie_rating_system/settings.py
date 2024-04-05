@@ -15,7 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
     'rest_framework',
-    'movies' ,
+    'movie_rating' ,
 ]
 
 REST_FRAMEWORK = {
@@ -36,7 +36,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'movie_rating_system.urls'
 
-AUTH_USER_MODEL = 'movies.User'
+AUTH_USER_MODEL = 'movie_rating.User'
 
 TEMPLATES = [
     {
