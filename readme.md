@@ -24,37 +24,42 @@ Ensure you have the following installed on your system:
 - PostgreSQL - For Remote Access
 
 1. **Clone the Repository**
-   git clone `https://github.com/mi-thun/movie-rating-system-drf.git`
+   ```bash
+   git clone https://github.com/mi-thun/movie-rating-system-drf.git
    cd movie-rating-system
+   ```
 
-2. **Create a Virtual Environment**
+3. **Create a Virtual Environment**
    For macOS and Linux:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+4. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-   - `python3 -m venv venv`
-   - `source venv/bin/activate`
-
-3. **Install Dependencies**
-
-   - `pip install -r requirements.txt`
-
-4. **Environment Configuration**
+5. **Environment Configuration**
 
    - Rename `.env.example` to `.env` and update the file with your PostgreSQL database credentials and other settings.
 
-5. **Database Setup**
+6. **Database Setup**
+   ```bash
+   sudo -u postgres psql
+   CREATE DATABASE bg_db;
+   CREATE USER bg_user WITH PASSWORD 'bg123';
+   GRANT ALL PRIVILEGES ON DATABASE bg_db TO bg_user;
+   \q
 
-   - `sudo -u postgres psql`
-   - `CREATE DATABASE bg_db;`
-   - `CREATE USER bg_user WITH PASSWORD 'bg123';`
-   - `GRANT ALL PRIVILEGES ON DATABASE bg_db TO bg_user;`
-
-   - `python manage.py makemigrations`
-   - `python manage.py migrate`
-   - `python manage.py createsuperuser`
-
-6. **Run the Development Server**
-   - `python manage.py runserver`
-
+   python manage.py makemigrations
+   python manage.py migrate
+   python manage.py createsuperuser
+   ```
+7. **Run the Development Server**
+   ```bash
+   python manage.py runserver
+   ```
 Visit `http://127.0.0.1:8000/` in your web browser to confirm the project is running successfully.
 
 ### Using the API
