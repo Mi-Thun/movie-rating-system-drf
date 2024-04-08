@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-The Visionary Tech Solutions Movie Rating System is a Django REST API designed to provide users with the capability to rate movies and search through a curated list of films. This project serves as a test assessment to demonstrate REST API development skills, including CRUD operations, authentication, and advanced querying capabilities.
+Movie Rating System is a Django REST API designed to provide users with the capability to rate movies and search through a curated list of films. This project serves as a test assessment to demonstrate REST API development skills, including CRUD operations, authentication, and advanced querying capabilities.
 
 ### Features
 
